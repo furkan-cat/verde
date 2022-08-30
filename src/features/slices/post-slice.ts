@@ -1,16 +1,11 @@
 import { IPostResponse } from "@features/api/api";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface IPosts {
-  posts: {
-    userId: number | null;
-    id: number | null;
-    title: string | null;
-    body: string | null;
-  };
+export interface IPost {
+  posts: IPostResponse[];
 }
 
-const initialState: IPosts = {
+const initialState = {
   posts: {
     userId: null,
     id: null,
@@ -23,8 +18,7 @@ const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    fillPosts(state, action: PayloadAction<IPostResponse[]>) {
-      // state type defination issue!!
+    fillPosts(state: any, action: PayloadAction<IPostResponse[]>) {
       state.posts = action.payload;
     },
   },
