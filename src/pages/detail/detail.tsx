@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
 import Card from "@components/card/card";
 import { IPostResponse } from "@features/api/api";
+import { useAppSelector } from "@features/hooks/hooks";
 
 interface ICardStateProps {
   id: number | undefined;
   title: string | undefined;
   description: string | undefined;
-  index: number | undefined;
+  cardIndex: number | undefined;
 }
 
 interface Location extends Path {
@@ -19,25 +20,11 @@ interface Location extends Path {
 
 const Detail = () => {
   const data = useLocation().state as ICardStateProps;
-  // const { index } = location.state;
-  const state: IPostResponse[] = useSelector(
-    (state: RootState) => state.postsReducer.posts
-  );
-
-  let selectedPostData;
-  const typeGuard = () => {
-    if (typeof data.index === "number") {
-      selectedPostData = state[data?.index];
-    }
-  };
 
   return (
     <>
       <h1>selam</h1>
-      <Card
-        title={selectedPostData.title}
-        description={selectedPostData.description}
-      />
+      <Card title={data.title} description={data.description} />
     </>
   );
 };
