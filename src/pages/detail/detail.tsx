@@ -1,31 +1,30 @@
-import React, { Key } from "react";
-import { Path, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/store";
+import { useLocation, useNavigate } from "react-router-dom";
 import Card from "@components/card/card";
-import { IPostResponse } from "@features/api/api";
-import { useAppSelector } from "@features/hooks/hooks";
+import Vstack from "@components/vstack/vstack";
+import TextInput from "@components/text-input/text-input";
+import Space from "@components/space/space";
 
 interface ICardStateProps {
   id: number | undefined;
   title: string | undefined;
-  description: string | undefined;
-  cardIndex: number | undefined;
-}
-
-interface Location extends Path {
-  state: ICardStateProps;
-  key: Key;
+  body: string | undefined;
 }
 
 const Detail = () => {
   const data = useLocation().state as ICardStateProps;
+  const navigate = useNavigate();
 
   return (
-    <>
-      <h1>selam</h1>
-      <Card title={data.title} description={data.description} />
-    </>
+    <Vstack center="items-center">
+      <TextInput text={data.title} />
+      <Space/>
+      <TextInput text={data.body} />
+      {/* <input type="text" value={data.body} /> */}
+      <div className="flex justify-between">
+        <button>Delete</button>
+        <button>Update</button>
+      </div>
+    </Vstack>
   );
 };
 
