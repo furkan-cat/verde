@@ -1,12 +1,31 @@
-interface ITextInput {
-  text: string | undefined;
+import clsx from "clsx";
+
+type TextAreaProps = JSX.IntrinsicElements["textarea"];
+
+interface ITextInput extends TextAreaProps {
+  readOnlyText?: string | undefined;
+  readOnly?: boolean;
+  value?: string;
 }
 
-const TextInput = ({ text }: ITextInput) => {
+const TextInput = ({
+  readOnlyText,
+  readOnly = false,
+  className,
+  onChange,
+  value,
+}: ITextInput) => {
   return (
-    <textarea className="p-2 resize-none" cols={35} rows={6}>
-      {text}
-    </textarea>
+    <form>
+      <textarea
+        className={clsx("p-2 font-normal", className)}
+        cols={60}
+        rows={6}
+        readOnly={readOnly}
+        value={value ? value : readOnlyText}
+        onChange={onChange}
+      />
+    </form>
   );
 };
 
