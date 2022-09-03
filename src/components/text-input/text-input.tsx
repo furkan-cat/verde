@@ -16,16 +16,14 @@ const TextInput = ({
   value,
 }: ITextInput) => {
   return (
-    <form>
-      <textarea
-        className={clsx("p-2 font-normal", className)}
-        cols={60}
-        rows={6}
-        readOnly={readOnly}
-        value={value ? value : readOnlyText}
-        onChange={onChange}
-      />
-    </form>
+    <textarea
+      className={clsx("p-2 font-normal", className)}
+      cols={60}
+      rows={6}
+      readOnly={readOnly}
+      value={value ? value : readOnlyText}
+      onChange={onChange}
+    />
   );
 };
 
