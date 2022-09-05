@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import { ReactElement, ReactNode } from "react";
+import { IconType, IconBaseProps } from "react-icons/lib";
 
 interface IRenderComponent {
-  Component?: React.ReactNode | React.ReactNode[];
-  option?: any;
+  Component: (() => JSX.Element) | ReactNode;
+  options?: IconBaseProps | any;
 }
 
-export const renderComponet: React.FC<IRenderComponent> = (
-  Component,
-  options
+export const renderComponent = (
+  Component: IRenderComponent["Component"],
+  options: IRenderComponent["options"] = {}
 ) => {
   switch (typeof Component) {
     case "function":
