@@ -1,5 +1,5 @@
-import { ReactElement, ReactNode } from "react";
-import { IconType, IconBaseProps } from "react-icons/lib";
+import { ReactNode } from 'react';
+import { IconBaseProps } from 'react-icons/lib';
 
 interface IRenderComponent {
   Component: (() => JSX.Element) | ReactNode;
@@ -7,11 +7,11 @@ interface IRenderComponent {
 }
 
 export const renderComponent = (
-  Component: IRenderComponent["Component"],
-  options: IRenderComponent["options"] = {}
+  Component: IRenderComponent['Component'],
+  options: IRenderComponent['options'] = {},
 ) => {
   switch (typeof Component) {
-    case "function":
+    case 'function':
       return <Component {...options} />;
     default:
       return Component;

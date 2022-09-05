@@ -1,9 +1,9 @@
-import React from "react";
-import { IoIosNotifications } from "react-icons/io";
-import { MdWindow } from "react-icons/md";
-import { FiPlay } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { routes } from "@constants/routes";
+import { FiPlay } from 'react-icons/fi';
+import { IoIosNotifications } from 'react-icons/io';
+import { MdWindow } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+
+import { routes } from '@constants/routes';
 
 const Navigation = () => {
   return (

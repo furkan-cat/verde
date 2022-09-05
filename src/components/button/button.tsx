@@ -1,10 +1,11 @@
-import { PropsWithChildren, ReactNode, ReactElement } from "react";
-import clsx from "clsx";
-import { renderComponent } from "src/helpers";
-import { IconBaseProps } from "react-icons/lib";
+import clsx from 'clsx';
+import { PropsWithChildren, ReactNode } from 'react';
+import { IconBaseProps } from 'react-icons/lib';
+
+import { renderComponent } from '@helpers/index';
 
 interface IButton extends PropsWithChildren {
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   className?: any;
   processing?: boolean;
   onClick?: any;
@@ -14,7 +15,7 @@ interface IButton extends PropsWithChildren {
 }
 
 const Button = ({
-  type = "submit",
+  type = 'submit',
   className,
   processing,
   children,
@@ -28,19 +29,15 @@ const Button = ({
       disabled={processing}
       type={type}
       className={clsx(
-        "inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150",
-        { "opacity-25": processing },
-        className
+        'inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150',
+        { 'opacity-25': processing },
+        className,
       )}
       onClick={onClick}
     >
-      {accesoryLeft && (
-        <span>{renderComponent(accesoryLeft, options && options)}</span>
-      )}
+      {accesoryLeft && <span>{renderComponent(accesoryLeft, options && options)}</span>}
       {children}
-      {accesoryRight && (
-        <span>{renderComponent(accesoryRight, options && options)}</span>
-      )}
+      {accesoryRight && <span>{renderComponent(accesoryRight, options && options)}</span>}
     </button>
   );
 };

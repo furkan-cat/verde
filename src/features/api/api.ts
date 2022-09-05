@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface IPostResponse {
   userId: number | undefined;
@@ -8,14 +8,14 @@ export interface IPostResponse {
 }
 
 export const apiSlice = createApi({
-  reducerPath: "postsApi",
+  reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: 'https://jsonplaceholder.typicode.com/',
   }),
   endpoints: (builder) => ({
     getPosts: builder.query<IPostResponse[], string | void>({
       query: () => ({
-        url: "posts",
+        url: 'posts',
       }),
     }),
     updatePost: builder.mutation<string, IPostResponse>({
@@ -23,7 +23,7 @@ export const apiSlice = createApi({
         const { id, userId, title, body } = data;
         return {
           url: `posts/${id}`,
-          method: "PUT",
+          method: 'PUT',
           body: {
             userId: userId,
             id: id,
@@ -36,14 +36,10 @@ export const apiSlice = createApi({
     deletePost: builder.mutation<IPostResponse[], string | void>({
       query: (id) => ({
         url: `posts/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
     }),
   }),
 });
 
-export const {
-  useGetPostsQuery,
-  useUpdatePostMutation,
-  useDeletePostMutation,
-} = apiSlice;
+export const { useGetPostsQuery, useUpdatePostMutation, useDeletePostMutation } = apiSlice;

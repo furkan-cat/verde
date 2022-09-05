@@ -1,5 +1,6 @@
-import { IPostResponse } from "@features/api/api";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+import { IPostResponse } from '@features/api/api';
 
 export interface IPost {
   posts: IPostResponse[];
@@ -9,13 +10,13 @@ const initialState = {
   posts: {
     userId: null,
     id: null,
-    title: "",
-    body: "",
+    title: '',
+    body: '',
   },
 };
 
 const postSlice = createSlice({
-  name: "post",
+  name: 'post',
   initialState,
   reducers: {
     fillPosts(state: any, action: PayloadAction<IPostResponse[]>) {

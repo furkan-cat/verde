@@ -1,25 +1,29 @@
-import React, { useEffect } from "react";
-import { IPostResponse, useGetPostsQuery } from "@features/api/api";
-import Card from "@components/card/card";
-import { RootState } from "@store/store";
-import { fillPosts } from "@features/slices/post-slice";
-import { useAppDispatch, useAppSelector } from "@features/hooks/hooks";
-import { routes } from "@constants/routes";
-import { Link } from "react-router-dom";
-import Spinner from "@components/spinner/spinner";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import Card from '@components/card/card';
+import Spinner from '@components/spinner/spinner';
+
+import { RootState } from '@store/store';
+
+import { IPostResponse, useGetPostsQuery } from '@features/api/api';
+import { useAppDispatch, useAppSelector } from '@features/hooks/hooks';
+import { fillPosts } from '@features/slices/post-slice';
+
+import { routes } from '@constants/routes';
 
 const Home: React.FC = (): JSX.Element => {
   const { data, isLoading } = useGetPostsQuery();
   const state: Record<number, IPostResponse> = useAppSelector(
-    (state: RootState) => state.postsReducer.posts
+    (state: RootState) => state.postsReducer.posts,
   );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     data && Object.keys(state).length < 1 && dispatch(fillPosts(data));
     data &&
-      localStorage.getItem("posts") == null &&
-      localStorage.setItem("posts", JSON.stringify(data));
+      localStorage.getItem('posts') == null &&
+      localStorage.setItem('posts', JSON.stringify(data));
   }, [data]);
 
   if (isLoading) {
@@ -34,7 +38,12 @@ const Home: React.FC = (): JSX.Element => {
           <Link
             key={id}
             to={routes.details}
-            state={{ userId, id, title, body }}
+            state={{
+              userId,
+              id,
+              title,
+              body,
+            }}
           >
             <Card title={title} description={body} />
           </Link>

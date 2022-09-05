@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import TextInput from "@components/text-input/text-input";
-import Button from "@components/button/button";
-import {
-  useDeletePostMutation,
-  useUpdatePostMutation,
-} from "@features/api/api";
-import { FaBeer } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import { FaBeer } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+
+import Button from '@components/button/button';
+import TextInput from '@components/text-input/text-input';
+
+import { useDeletePostMutation, useUpdatePostMutation } from '@features/api/api';
 
 interface ICardStateProps {
   userId: number | undefined;
@@ -18,7 +17,7 @@ interface ICardStateProps {
 const Detail = () => {
   const data = useLocation().state as ICardStateProps;
   const { id, userId, body, title } = data;
-  const [inputVal, setInputVal] = useState<string | undefined>("");
+  const [inputVal, setInputVal] = useState<string | undefined>('');
   const [updatePost] = useUpdatePostMutation();
   const [deletePost] = useDeletePostMutation();
 

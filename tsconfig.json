@@ -21,7 +21,8 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@store/*": ["src/store/*"],
-      "@features/*": ["src/features/*"]
+      "@features/*": ["src/features/*"],
+      "@helpers/*": ["src/helpers/*"]
     }
   },
   "include": ["src", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]

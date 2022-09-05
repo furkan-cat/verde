@@ -1,7 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from "@features/slices/post-slice";
-import { apiSlice } from "@features/api/api";
-import { useDispatch } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+
+import { apiSlice } from '@features/api/api';
+import postsReducer from '@features/slices/post-slice';
 
 export const store = configureStore({
   reducer: {

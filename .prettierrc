@@ -1,0 +1,20 @@
+{
+  "importOrder": [
+    "^react/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@components/(.*)$",
+    "^@pages/(.*)$",
+    "^@store/(.*)$",
+    "^@features/(.*)$",
+    "^@helpers/(.*)$",
+    "^@constants/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": true
+}
