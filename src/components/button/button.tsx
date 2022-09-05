@@ -1,15 +1,16 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode, ReactElement } from "react";
 import clsx from "clsx";
-import { renderComponet } from "src/helpers";
+import { renderComponent } from "src/helpers";
+import { IconBaseProps } from "react-icons/lib";
 
 interface IButton extends PropsWithChildren {
   type?: "button" | "submit" | "reset";
   className?: any;
   processing?: boolean;
   onClick?: any;
-  icon?: JSX.Element;
-  accesoryLeft?: React.ReactNode;
-  accesoryRight?: React.ReactNode | React.ReactNode[];
+  accesoryLeft?: (() => JSX.Element) | ReactNode;
+  accesoryRight?: (() => JSX.Element) | ReactNode;
+  options?: IconBaseProps | any;
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   onClick,
   accesoryLeft,
   accesoryRight,
+  options,
 }: IButton) => {
   return (
     <button
@@ -32,9 +34,13 @@ const Button = ({
       )}
       onClick={onClick}
     >
-      {/* {accesoryLeft && <div>{renderComponet(accesoryLeft)}</div>} */}
+      {accesoryLeft && (
+        <span>{renderComponent(accesoryLeft, options && options)}</span>
+      )}
       {children}
-      {/* {accesoryRight && renderComponet(accesoryRight)} */}
+      {accesoryRight && (
+        <span>{renderComponent(accesoryRight, options && options)}</span>
+      )}
     </button>
   );
 };
