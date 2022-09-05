@@ -6,7 +6,7 @@ import {
   useDeletePostMutation,
   useUpdatePostMutation,
 } from "@features/api/api";
-import { FaBeer } from 'react-icons/fa';
+import { FaBeer } from "react-icons/fa";
 
 interface ICardStateProps {
   userId: number | undefined;
@@ -21,7 +21,6 @@ const Detail = () => {
   const [inputVal, setInputVal] = useState<string | undefined>("");
   const [updatePost] = useUpdatePostMutation();
   const [deletePost] = useDeletePostMutation();
-  console.log(typeof id);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputVal(e.target.value);
@@ -41,7 +40,11 @@ const Detail = () => {
   return (
     <div className="flex flex-col content-center w-6/12 m-auto space-y-2 mt-4">
       <div className="flex place-self-end">
-        <Button className="bg-sky-700" onClick={() => deletePost()} accesoryLeft={<FaBeer/>}>
+        <Button
+          className="bg-sky-700"
+          onClick={() => deletePost()}
+          accesoryLeft={<FaBeer className="mr-2" />}
+        >
           Create New Post
         </Button>
       </div>
