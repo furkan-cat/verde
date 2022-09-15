@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-
 import { apiSlice } from '@features/api/api';
-import postsReducer from '@features/slices/post-slice';
+import apiPostsReducer from '@features/slices/api-post-slice';
+import ownPostsReducer from '@features/slices/own-post-slice';
 
 export const store = configureStore({
   reducer: {
-    postsReducer,
+    apiPostsReducer,
+    ownPostsReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {

@@ -1,13 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
 import { IPostResponse } from '@features/api/api';
 
 export interface IPost {
-  posts: IPostResponse[];
+  ownPosts: IPostResponse[];
 }
 
 const initialState = {
-  posts: {
+  ownPosts: {
     userId: null,
     id: null,
     title: '',
@@ -16,14 +15,14 @@ const initialState = {
 };
 
 const postSlice = createSlice({
-  name: 'post',
+  name: 'ownPost',
   initialState,
   reducers: {
-    fillPosts(state: any, action: PayloadAction<IPostResponse[]>) {
-      state.posts = action.payload;
+    fillOwnPosts(state: any, action: PayloadAction<IPostResponse[]>) {
+      state.ownPosts = action.payload;
     },
   },
 });
 
-export const { fillPosts } = postSlice.actions;
+export const { fillOwnPosts } = postSlice.actions;
 export default postSlice.reducer;
