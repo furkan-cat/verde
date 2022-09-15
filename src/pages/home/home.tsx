@@ -1,26 +1,22 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import Card from '@components/card/card';
 import Spinner from '@components/spinner/spinner';
-
 import { RootState } from '@store/store';
-
 import { IPostResponse, useGetPostsQuery } from '@features/api/api';
 import { useAppDispatch, useAppSelector } from '@features/hooks/hooks';
-import { fillPosts } from '@features/slices/post-slice';
-
+import { fillApiPosts } from '@features/slices/api-post-slice';
 import { routes } from '@constants/routes';
 
 const Home: React.FC = (): JSX.Element => {
   const { data, isLoading } = useGetPostsQuery();
   const state: Record<number, IPostResponse> = useAppSelector(
-    (state: RootState) => state.postsReducer.posts,
+    (state: RootState) => state.apiPostsReducer.apiPosts,
   );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    data && Object.keys(state).length < 1 && dispatch(fillPosts(data));
+    data && Object.keys(state).length < 1 && dispatch(fillApiPosts(data));
     data &&
       localStorage.getItem('posts') == null &&
       localStorage.setItem('posts', JSON.stringify(data));

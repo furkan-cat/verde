@@ -1,7 +1,6 @@
-import clsx from 'clsx';
 import { PropsWithChildren, ReactNode } from 'react';
+import clsx from 'clsx';
 import { IconBaseProps } from 'react-icons/lib';
-
 import { renderComponent } from '@helpers/index';
 
 interface IButton extends PropsWithChildren {
