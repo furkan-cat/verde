@@ -1,7 +1,9 @@
 {
   "importOrder": [
     "^react/(.*)$",
-    "<THIRD_PARTY_MODULES>",
+    "^clsx",
+    "^uuid",
+    "^react-icons/(.*)$",
     "^@components/(.*)$",
     "^@pages/(.*)$",
     "^@store/(.*)$",
@@ -10,7 +12,7 @@
     "^@constants/(.*)$",
     "^[./]"
   ],
-  "importOrderSeparation": true,
+  "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
   "printWidth": 100,
   "tabWidth": 2,
